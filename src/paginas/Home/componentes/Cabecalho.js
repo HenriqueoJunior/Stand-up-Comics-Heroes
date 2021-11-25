@@ -1,11 +1,12 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
+import React from "react";
 
 function Cabecalho() {
   return (
-    <Button variant="contained" color="primary">
-      Hello World
-    </Button>
+    <header className="header">
+      <div className="toolbar">
+        
+      </div>
+    </header>
   );
 }
 export default Cabecalho;

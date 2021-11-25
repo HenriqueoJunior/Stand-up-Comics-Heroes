@@ -1,17 +1,17 @@
 import React from "react";
 import Cabecalho from "./componentes/Cabecalho";
+import Catalogo from "./componentes/Catalogo";
+import NavBar from "./componentes/NavBar";
+//import "./style.css";
 
 function Home() {
     return (
     <div>
-        <Cabecalho />
+        <Cabecalho/>
         <main >
-            <div >
-                Navbar
-            </div>
-            <div >
-                Feed
-            </div>
+            <NavBar />
+
+            <Catalogo />
             
         </main>
     </div>
