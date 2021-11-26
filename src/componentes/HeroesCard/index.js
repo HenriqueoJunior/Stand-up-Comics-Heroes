@@ -15,10 +15,6 @@ import ListaBiografia from "./Listas/ListaBiografia";
 import ListaEstatisticas from "./Listas/ListaEstatisticas";
 import ListaLigacao from "./Listas/ListaLigacao";
 
-
-
-
-
 const estilos = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -46,6 +42,12 @@ function HeroesCard({ heroes }) {
   const classes = estilos();
 
   return (
+
+      
+<div>
+
+
+
     <Card className={classes.root} sx={{ maxWidth: 1200 }}>
       <CardContent>
         <CardMedia component="img" src={heroes.images.lg} alt={heroes.slug} />
@@ -73,7 +75,7 @@ function HeroesCard({ heroes }) {
       </CardActions>
 
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent className={classes.detalhes}>
+        <CardContent>
           <Typography variant="h6" paragraph>
             Estatísticas
             <ListaEstatisticas heroes={heroes} />
@@ -85,6 +87,7 @@ function HeroesCard({ heroes }) {
         </CardContent>
       </Collapse>
     </Card>
+</div>
   );
 }
 

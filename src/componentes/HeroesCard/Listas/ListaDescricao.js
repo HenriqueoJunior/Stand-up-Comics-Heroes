@@ -15,4 +15,4 @@ function ListaDescricao({ heroes }) {
   );
 }
 
-export default ListaDescricao
+export default ListaDescricao;

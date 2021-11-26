@@ -8,9 +8,6 @@ import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import Menu from "./Menu";
 
-
-
-
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -52,34 +49,30 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+
+
+
+
+
+
+
 function Cabecalho() {
   return (
-    <Box sx={{ flexGrow: 1 }} >
-      <AppBar position="fixed" color="inherit" enableColorOnDark >
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="fixed" color="inherit" enableColorOnDark>
         <Toolbar>
-        <Menu />
+          <Menu />
           <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            Herois
-               
+            Stand-up Heroes (os mais "Cómicos")
           </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Batman"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
         </Toolbar>
       </AppBar>
     </Box>
-    
   );
 }
 export default Cabecalho;
