@@ -4,7 +4,7 @@ import ListItemText from "@mui/material/ListItemText";
 
 function ListaDescricao({ heroes }) {
   return (
-    <List>
+    <List >
       <ListItemText>Gênero: {heroes.appearance.gender}</ListItemText>
       <ListItemText>Raça: {heroes.appearance.race}</ListItemText>
       <ListItemText>Altura: {heroes.appearance.height}</ListItemText>

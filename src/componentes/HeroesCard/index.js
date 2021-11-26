@@ -15,11 +15,13 @@ import ListaBiografia from "./Listas/ListaBiografia";
 import ListaEstatisticas from "./Listas/ListaEstatisticas";
 import ListaLigacao from "./Listas/ListaLigacao";
 
-const estilos = makeStyles((theme) => ({
+const estilos = makeStyles({
   root: {
     display: "flex",
+    flexDirection: "row",
   },
-}));
+  
+});
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -42,52 +44,57 @@ function HeroesCard({ heroes }) {
   const classes = estilos();
 
   return (
-
-      
-<div>
-
-
-
-    <Card className={classes.root} sx={{ maxWidth: 1200 }}>
-      <CardContent>
-        <CardMedia component="img" src={heroes.images.lg} alt={heroes.slug} />
-      </CardContent>
-      <CardContent>
-        <CardHeader title={heroes.name} subheader={heroes.biography.fullName} />
-        <Typography variant="h6" paragraph>
-          Descrição
-          <ListaDescricao heroes={heroes} />
-        </Typography>
-        <Typography variant="h6" paragraph>
-          Biografia
-          <ListaBiografia heroes={heroes} />
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="Mostrar detalhes"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
-      </CardActions>
-
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography variant="h6" paragraph>
-            Estatísticas
-            <ListaEstatisticas heroes={heroes} />
-          </Typography>
-          <Typography variant="h6" paragraph>
-            Ligações
-            <ListaLigacao heroes={heroes} />
-          </Typography>
+    <div>
+      <Card className={classes.root} sx={{ maxWidth: 1280 }}>
+        <CardContent className={classes.root} >
+          <CardContent>
+            <CardMedia
+              component="img"
+              src={`https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/${heroes.slug}.jpg`}
+              alt={heroes.slug}
+            />
+          </CardContent>
+          <CardContent>
+            <CardHeader
+              title={heroes.name}
+              subheader={heroes.biography.fullName}
+            />
+            <Typography variant="h6">
+              Descrição
+              <ListaDescricao heroes={heroes} />
+            </Typography>
+            <Typography variant="h6">
+              Biografia
+              <ListaBiografia heroes={heroes} />
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <ExpandMore
+              expand={expanded}
+              onClick={handleExpandClick}
+              aria-expanded={expanded}
+              aria-label="Mostrar detalhes"
+            >
+              <ExpandMoreIcon />
+            </ExpandMore>
+          </CardActions>
+          <CardContent>
+            <Collapse in={expanded} timeout="auto" unmountOnExit>
+              <CardContent>
+                <Typography variant="h6">
+                  Estatísticas
+                  <ListaEstatisticas heroes={heroes} />
+                </Typography>
+                <Typography variant="h6">
+                  Ligações
+                  <ListaLigacao heroes={heroes} />
+                </Typography>
+              </CardContent>
+            </Collapse>
+          </CardContent>
         </CardContent>
-      </Collapse>
-    </Card>
-</div>
+      </Card>
+    </div>
   );
 }
 
