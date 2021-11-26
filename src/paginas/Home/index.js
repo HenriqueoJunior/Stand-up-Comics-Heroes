@@ -13,13 +13,15 @@ const estilos = makeStyles((theme) => ({
         flexDirection: "column",
       },
       main: {
+          
+        maxWidth: 1980,
         height: "100vh",
         marginTop: theme.spacing(5),
         padding:  theme.spacing(3)
       },
-      feed: {
-          minHeight: theme.spacing(8),
-      }
+      
+
+
 }));
 
 
@@ -30,7 +32,7 @@ function Home() {
       <Cabecalho />
       <div className={classes.feed}>
         <main className={classes.main}>
-          <Container maxWidth="lg">
+          <Container>
             <Box display="flex" >
               <Catalogo/>
             </Box>

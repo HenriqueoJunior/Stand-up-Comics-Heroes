@@ -3,9 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import HeroesCard from "../../../componentes/HeroesCard";
 
 const estilos = makeStyles((theme) => ({
-    root: {
-
-    }
 }));
 
 const heroes = [
@@ -177,7 +174,11 @@ function Catalogo () {
         <div className={classes.root}>
         {
             heroes.map(heroes => (
-                <HeroesCard key={heroes.id} heroes={heroes} />
+                <div className={classes.card}>
+                <HeroesCard key={heroes.id} heroes={heroes}/>
+                </div>
+
+
             ))
         }
 

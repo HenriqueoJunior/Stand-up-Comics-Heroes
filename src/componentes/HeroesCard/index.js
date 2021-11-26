@@ -10,12 +10,17 @@ import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import List from "@mui/material/List";
-import ListItemText from "@mui/material/ListItemText";
+import ListaDescricao from "./Listas/ListaDescricao";
+import ListaBiografia from "./Listas/ListaBiografia";
+import ListaEstatisticas from "./Listas/ListaEstatisticas";
+import ListaLigacao from "./Listas/ListaLigacao";
+
+
+
+
 
 const estilos = makeStyles((theme) => ({
   root: {
-    marginBottom: theme.spacing(1),
     display: "flex",
   },
 }));
@@ -24,8 +29,8 @@ const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
 })(({ theme, expand }) => ({
-  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-  marginLeft: "auto",
+  transform: !expand ? "rotate(90deg)" : "rotate(270deg)",
+  marginRight: "auto",
   transition: theme.transitions.create("transform", {
     duration: theme.transitions.duration.shortest,
   }),
@@ -41,33 +46,22 @@ function HeroesCard({ heroes }) {
   const classes = estilos();
 
   return (
-    <Card className={classes.root}>
-      <CardHeader title={heroes.name} />
-      <CardMedia
-        component="img"
-        height="300"
-        width="100%"
-        src={heroes.images.lg}
-        alt={heroes.slug}
-      />
+    <Card className={classes.root} sx={{ maxWidth: 1200 }}>
       <CardContent>
-        <Typography variant="h5" color="text.primary">
-          Estatísticas
-          <List>
-            <ListItemText>
-              Inteligência:{heroes.powerstats.intelligence}
-            </ListItemText>
-            <ListItemText>Força:{heroes.powerstats.strength}</ListItemText>
-            <ListItemText>Velocidade:{heroes.powerstats.speed}</ListItemText>
-            <ListItemText>
-              Resistência:{heroes.powerstats.durability}
-            </ListItemText>
-            <ListItemText>Poder:{heroes.powerstats.power}</ListItemText>
-            <ListItemText>Combate:{heroes.powerstats.combat}</ListItemText>
-          </List>
+        <CardMedia component="img" src={heroes.images.lg} alt={heroes.slug} />
+      </CardContent>
+      <CardContent>
+        <CardHeader title={heroes.name} subheader={heroes.biography.fullName} />
+        <Typography variant="h6" paragraph>
+          Descrição
+          <ListaDescricao heroes={heroes} />
+        </Typography>
+        <Typography variant="h6" paragraph>
+          Biografia
+          <ListaBiografia heroes={heroes} />
         </Typography>
       </CardContent>
-      <CardActions >
+      <CardActions>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -77,11 +71,17 @@ function HeroesCard({ heroes }) {
           <ExpandMoreIcon />
         </ExpandMore>
       </CardActions>
+
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph></Typography>
-          <Typography paragraph></Typography>
-          <Typography paragraph></Typography>
+        <CardContent className={classes.detalhes}>
+          <Typography variant="h6" paragraph>
+            Estatísticas
+            <ListaEstatisticas heroes={heroes} />
+          </Typography>
+          <Typography variant="h6" paragraph>
+            Ligações
+            <ListaLigacao heroes={heroes} />
+          </Typography>
         </CardContent>
       </Collapse>
     </Card>
