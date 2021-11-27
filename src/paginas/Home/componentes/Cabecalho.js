@@ -1,25 +1,41 @@
 import React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Menu from "./Menu";
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  Typography,
+  TextField,
+  Autocomplete,
+  createFilterOptions,
+} from "@mui/material/";
 
+const filterOptions = createFilterOptions({
+  matchFrom: "start",
+  stringify: (option) => option.name,
+});
 
-function Cabecalho() {
+function Cabecalho({ heroes }) {
+  console.log(heroes);
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed" color="inherit" enableColorOnDark>
+    <Box>
+      <AppBar position="fixed" color="inherit">
         <Toolbar>
-          <Menu />
           <Typography
             variant="h6"
-            noWrap
-            component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
             Stand-up Heroes (os mais "Cómicos")
           </Typography>
+
+          <Autocomplete
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            options={heroes}
+            getOptionLabel={(option) => option.name}
+            filterOptions={filterOptions}
+            renderInput={(params) => (
+              <TextField {...params} label="I'm batman" />
+            )}
+          />
         </Toolbar>
       </AppBar>
     </Box>

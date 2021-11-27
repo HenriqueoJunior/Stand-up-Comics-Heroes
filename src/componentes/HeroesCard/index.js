@@ -1,14 +1,16 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { styled } from "@mui/material/styles";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import Collapse from "@mui/material/Collapse";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
+import {
+  styled,
+  Card,
+  CardHeader,
+  CardMedia,
+  CardContent,
+  CardActions,
+  Collapse,
+  IconButton,
+  Typography,
+} from "@mui/material/";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ListaDescricao from "./Listas/ListaDescricao";
 import ListaBiografia from "./Listas/ListaBiografia";
@@ -20,7 +22,6 @@ const estilos = makeStyles({
     display: "flex",
     flexDirection: "row",
   },
-  
 });
 
 const ExpandMore = styled((props) => {
@@ -45,12 +46,12 @@ function HeroesCard({ heroes }) {
 
   return (
     <div>
-      <Card className={classes.root} sx={{ maxWidth: 1280 }}>
-        <CardContent className={classes.root} >
+      <Card spacing={2} sx={{ maxWidth: 1280, border: 1 }}>
+        <CardContent className={classes.root}>
           <CardContent>
             <CardMedia
               component="img"
-              src={`https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/${heroes.slug}.jpg`}
+              src={heroes.images.lg}
               alt={heroes.slug}
             />
           </CardContent>
